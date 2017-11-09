@@ -1,0 +1,28 @@
+{
+  "name": "valjean",
+  "version": "0.0.1",
+  "description": "A crowd-funded charity for CB's hackathon 1.1 ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeoffreyLong/hackathon-1.1-charity.git"
+  },
+  "keywords": [
+    "hackathon",
+    "cb",
+    "carbon",
+    "black",
+    "crowd",
+    "funding",
+    "charity"
+  ],
+  "author": "Carbon Black",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/GeoffreyLong/hackathon-1.1-charity/issues"
+  },
+  "homepage": "https://github.com/GeoffreyLong/hackathon-1.1-charity#readme"
+}
