@@ -1,5 +1,5 @@
-debug = process.env.DEBUG
+quiet = process.env.QUIET
 
 module.exports =
-  info: (s) -> console.log s unless not debug
-  error: (s) -> console.error s unless not debug
+  info: (s) -> console.log s unless quiet
+  error: (s) -> console.error s
