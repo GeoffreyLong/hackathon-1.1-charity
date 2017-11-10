@@ -24,6 +24,9 @@ api-router.get '/endpoint', (req, res, next) ->
 app = express!
     ..get '/' (req, res) -> res.send backend-ui
     ..use '/api' api-router
+    ..get '*' (req, res) ->
+        console.error "#{req.hostname} -> #{req.originalUrl}: 404 Not found" 
+        res.send error: 'Not found'
     ..listen 3000 ->
         console.log "Example app listening at http://#host:#port"
 
