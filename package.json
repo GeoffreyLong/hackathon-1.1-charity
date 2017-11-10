@@ -29,13 +29,15 @@
   "dependencies": {
     "colors": "^1.1.2",
     "express": "^4.16.2",
-    "livescript": "^1.5.0"
+    "livescript": "^1.5.0",
+    "mongodb": "^2.2.33"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-livescript": "^3.0.1",
     "gulp-mocha": "^4.3.1",
-    "mocha": "^4.0.1"
+    "mocha": "^4.0.1",
+    "nodemon": "^1.12.1"
   }
 }

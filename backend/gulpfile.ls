@@ -6,8 +6,7 @@ require! {
     'gulp-livescript'
 }
 
-gulp.task \run <[build start]>
-
+gulp.task \run <[ build start ]>
 
 gulp.task \start ->
     proc = ps.spawn 'node' ['build/app.js']
@@ -16,10 +15,10 @@ gulp.task \start ->
         console.log "#data".green
 
     proc.stderr.on \data (data) ->
-        console.log "stderr: #data".red
+        console.log "#data".red
 
 gulp.task \build ->
-    gulp.src \src/app.ls
+    gulp.src [\src/*.ls \src/**/*.ls]
     .pipe gulp-livescript bare: true
     .pipe gulp.dest \build
 
