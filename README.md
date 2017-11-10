@@ -22,11 +22,20 @@ or you can go here to get the most up to date version: https://nodejs.org/en/dow
 npm install
 ```
 #### UI
-- ???
-- Profit
+
+Will run the UI on localhost:3000
+
+```bash
+cd client
+npm install
+npm run start
+```
+
 
 #### Backend
-This will build and start the backend.
+
+This will build and start the backend (localhost:3001).
+
 ```bash
 npm run backend
 ```
@@ -41,3 +50,8 @@ gulp clean
 ```
 
 `gulp run` is equivalent to `gulp build` followed by `gulp start`
+
+#### Database
+
+If on a mac, follow this guide
+https://treehouse.github.io/installation-guides/mac/mongo-mac.html 
