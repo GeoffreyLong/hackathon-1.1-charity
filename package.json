@@ -4,7 +4,8 @@
   "description": "A crowd-funded charity for CB's hackathon 1.1 ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "backend": "cd backend && gulp run; cd .."
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,19 @@
   "bugs": {
     "url": "https://github.com/GeoffreyLong/hackathon-1.1-charity/issues"
   },
-  "homepage": "https://github.com/GeoffreyLong/hackathon-1.1-charity#readme"
+  "homepage": "https://github.com/GeoffreyLong/hackathon-1.1-charity#readme",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "express": "^4.16.2",
+    "livescript": "^1.5.0",
+    "mongodb": "^2.2.33"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-livescript": "^3.0.1",
+    "gulp-mocha": "^4.3.1",
+    "mocha": "^4.0.1",
+    "nodemon": "^1.12.1"
+  }
 }
