@@ -55,6 +55,7 @@ transaction = {
   paymentInformation: {
     info: TBD
   }
+  # TODO creation time?
 }
 ```
 

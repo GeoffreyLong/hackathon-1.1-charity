@@ -2,6 +2,7 @@ require! {
     express 
     mongoose
     './router': api-router
+    './models/user': User
 } 
 
 host = process.env.HOSTNAME || \localhost
@@ -18,4 +19,3 @@ app = express!
         res.send error: 'Not found'
     ..listen 3000 ->
         console.log "Example app listening at http://#host:#port"
-

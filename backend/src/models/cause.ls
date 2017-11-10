@@ -16,7 +16,7 @@ Cause = mongoose.model 'Cause' {
     goal: {
         amount: Number
         pledged: Number
-        deadline: Number
+        deadline: Date
         item: String
         deliveryInfo: {
             address: String
@@ -27,9 +27,9 @@ Cause = mongoose.model 'Cause' {
         ref: 'Transaction'
     }]
     feed: [{
-        createTime: Number,
+        createTime: Date,
         content: String
     }]
 }
 
-modules.exports = Cause
+module.exports = Cause

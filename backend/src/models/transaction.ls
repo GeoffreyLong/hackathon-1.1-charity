@@ -17,4 +17,4 @@ Transaction = mongoose.model 'Transaction' {
     }
 }
 
-modules.export = Transaction
+module.exports = Transaction
