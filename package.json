@@ -30,6 +30,7 @@
     "express": "^4.16.2",
     "livescript": "^1.5.0",
     "mongodb": "^2.2.33",
+    "mongoose": "^4.13.1",
     "prelude-ls": "^1.1.2"
   },
   "devDependencies": {

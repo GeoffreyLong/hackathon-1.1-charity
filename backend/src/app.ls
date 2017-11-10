@@ -1,14 +1,14 @@
 require! {
-    express
+    express 
+    mongoose
     './logger'
-    mongodb: mongo
     './router': api-router
-} 
+}
 
 host = process.env.HOSTNAME || \localhost
 port = parse-int process.env.PORT || 3000
 
-db = new mongo.Db \valjean, new mongo.Server 'localhost', 27017
+mongoose.connect 'mongodb://localhost/valjean' (error) -> error ? console.log error  : console.log 'successfully connected to db'
 
 app = express!
   ..get '/' (req, res) -> res.send-file "api-doc.html" root: "#{__dirname}/res/"
@@ -22,4 +22,3 @@ app = express!
     res.send error: 'Not found'
   ..listen 3000 ->
     console.log "Example app listening at http://#host:#port"
-

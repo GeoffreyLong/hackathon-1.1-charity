@@ -28,6 +28,8 @@ user = {
 cause = {
   id: 1,
   displayName: "My Charity Goal",
+  description: "A description of my awesome project!",
+  owner: 1,  #user-id,
   photos: {
     displayPhoto: 'url',
     photos: ['url']
@@ -42,8 +44,6 @@ cause = {
     }
   },
   transactions: [1, 2],
-  owner: 1,  #user-id,
-  description: "A description of my awesome project!",
   feed: [{
     createTime: 23857,
     content: "This is an update!"
@@ -60,6 +60,7 @@ transaction = {
   paymentInformation: {
     info: TBD
   }
+  # TODO creation time?
 }
 ```
 
