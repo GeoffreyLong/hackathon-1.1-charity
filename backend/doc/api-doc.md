@@ -2,7 +2,12 @@
 Welcome! This is some doc!
 ---
 ## Endpoints
-GET [/api/endpoint](/api/endpoint)
+- GET [/api/user/:id](/api/user/1)
+- POST /api/user
+- GET [/api/cause/:id](/api/cause/1)
+- POST /api/cause
+- GET [/api/transaction/:id](/api/transaction/1)
+- GET [/api/user/:id/transactions](/api/user/1/transactions)
 ---
 ### Models
 #### Users
