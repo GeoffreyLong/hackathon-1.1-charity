@@ -1,6 +1,4 @@
-require! {
-    mongoose
-}
+require! mongoose
 
 Transaction = mongoose.model 'Transaction' {
     amount: Number

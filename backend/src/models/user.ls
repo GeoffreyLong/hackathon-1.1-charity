@@ -1,6 +1,4 @@
-require! {
-    mongoose
-}
+require! mongoose
 
 User = mongoose.model 'User' {
     displayName: String

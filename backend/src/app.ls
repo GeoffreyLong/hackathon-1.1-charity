@@ -2,8 +2,7 @@ require! {
     express 
     mongoose
     './router': api-router
-    './models/user': User
-} 
+}
 
 host = process.env.HOSTNAME || \localhost
 port = parse-int process.env.PORT || 3000
