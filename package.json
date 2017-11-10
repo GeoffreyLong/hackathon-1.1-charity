@@ -37,7 +37,6 @@
     "gulp-clean": "^0.3.2",
     "gulp-livescript": "^3.0.1",
     "gulp-mocha": "^4.3.1",
-    "mocha": "^4.0.1",
-    "nodemon": "^1.12.1"
+    "mocha": "^4.0.1"
   }
 }
