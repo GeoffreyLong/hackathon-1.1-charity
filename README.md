@@ -2,13 +2,13 @@
 A crowd-funded charity for CB's hackathon 1.1
 
 ## Instructions
-####Install Node.js
-#####macOS (with brew)
+#### Install Node.js
+##### macOS (with brew)
 First install brew: https://brew.sh/ and then
 ```bash
 brew install node
 ```
-#####CentOS
+##### CentOS
 ```bash
 sudo yum install epel-release
 sudo yum install nodejs
@@ -16,16 +16,16 @@ sudo yum install nodejs
 or you can go here to get the most up to date version: https://nodejs.org/en/download
 
 
-####Setup
+#### Setup
 (In the repository)
 ```bash
 npm install
 ```
-####UI
+#### UI
 - ???
 - Profit
 
-####Backend
+#### Backend
 This will build and start the backend.
 ```bash
 npm run backend
