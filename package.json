@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/GeoffreyLong/hackathon-1.1-charity#readme",
   "dependencies": {
+    "colors": "^1.1.2",
     "express": "^4.16.2",
     "livescript": "^1.5.0"
   },

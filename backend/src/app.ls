@@ -1,6 +1,11 @@
-require! express
+require! \express
+
+
 app = express!
-app.get '/' (req, res) -> res.send 'Hello World!'
+
+app.get '/api/endpoint' (req, res) ->
+    res.send(message: 'Hey you hit an endpoint!' |> JSON.stringify)
+    console.log "/api/endpoint hit from #{req.hostname}"
 
 server = app.listen 3000 ->
   host = \localhost

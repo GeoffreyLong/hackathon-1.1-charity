@@ -1,22 +1,22 @@
-require! [\gulp \gulp-livescript]
+require! {
+    child_process: ps
+    colors
+    gulp
+    'gulp-clean': clean
+    'gulp-livescript'
+}
 
-clean = require \gulp-clean
-ps = require \child_process
-
-gulp.task \run [\build \start]
+gulp.task \run <[build start]>
 
 
 gulp.task \start ->
     proc = ps.spawn 'node' ['build/app.js']
 
     proc.stdout.on \data (data) ->
-        console.log "stdout: #data"
+        console.log "#data".green
 
     proc.stderr.on \data (data) ->
-        console.log "stderr: #data"
-
-    proc.on \close (code) ->
-        console.log "child process exited with code #code"
+        console.log "stderr: #data".red
 
 gulp.task \build ->
     gulp.src \src/app.ls
