@@ -1,10 +1,17 @@
-require! express
+require! {
+  './controller'
+  express
+}
 
 api-router = express.Router!
-    ..get '/endpoint', (req, res, next) ->
-        console.log "#{req.hostname} -> /api/endpoint"
-        res.set-header 'Content-Type' 'application/json'
-        res.status 200
-            .send message: 'Hello there, I am the endpoint!'
+  ..post '/user' controller.post-user
+  ..get '/user/:userId' controller.get-user
+  ..get '/user/:userId/transactions' controller.get-user-transactions
+  ..post '/transaction' controller.post-transaction
+  ..get '/transaction/:transactionId' controller.get-transaction
+  ..post '/cause' controller.post-cause
+  ..get '/cause/:causeId' controller.get-cause
+  
 
 module.exports = api-router
+
