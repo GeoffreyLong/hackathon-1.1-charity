@@ -26,13 +26,11 @@
   },
   "homepage": "https://github.com/GeoffreyLong/hackathon-1.1-charity#readme",
   "dependencies": {
-    "aphrodite": "^1.2.5",
     "colors": "^1.1.2",
     "express": "^4.16.2",
     "livescript": "^1.5.0",
     "mongoose": "^4.13.1",
-    "prelude-ls": "^1.1.2",
-    "react-router-dom": "^4.2.2"
+    "prelude-ls": "^1.1.2"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
