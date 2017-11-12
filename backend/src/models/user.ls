@@ -3,6 +3,7 @@ require! mongoose
 User = mongoose.model 'User' {
     displayName: String
     email: String
+    sponsor: Boolean
     causes: {
         owned: [{
             type: mongoose.Schema.Types.ObjectId
