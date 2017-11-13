@@ -7,7 +7,6 @@ require! {
     './models/transaction'
     './models/user'
 }
-        
 
 prepare-response = (err, value, def-val = 200) ->
     response: {}
@@ -24,7 +23,6 @@ prepare-response = (err, value, def-val = 200) ->
         status = def-val
         response = value
     {status: status, response: response}
-    
 
 controller =
     get-campaign: (req, res) ->
@@ -113,6 +111,5 @@ controller =
             {status, value} = prepare-response err, u, 201
             res.status status
                 .send value
-
 
 module.exports = controller
