@@ -36,7 +36,10 @@ controller =
         id = req.params.userId
         logger.info "#{req.hostname} -> GET /api/user/#id/transactions"
         e = error: void
-        trans = transaction.find(user: id).exec (err, _) -> e.error := err
+        trans = message: \nothing
+        transaction.find(user: id).exec (err, t) -> 
+            e.error := err
+            trans := t
         status = if e.error then 500 else 200
         res.status status
             .send if e.error then e else trans
