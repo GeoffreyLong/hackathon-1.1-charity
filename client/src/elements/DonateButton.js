@@ -63,7 +63,7 @@ class DonateButton extends React.Component {
     }
 
     donate(amt) {
-        console.log(amt);
+        this.props.onDonate(amt);
     }
 
     render() {
@@ -81,24 +81,46 @@ class DonateButton extends React.Component {
                             src='http://downloadicons.net/sites/default/files/left-arrow-icon-93018.png'
                         />
                     </div>
-                    <div
-                        className={ css(styles.donationOption) }
-                        onClick={ () => this.donate(1) }
-                    >
-                        $1
-                    </div>
-                    <div
-                        className={ css(styles.donationOption) }
-                        onClick={ () => this.donate(5) }
-                    >
-                        $5
-                    </div>
-                    <div
-                        className={ css(styles.donationOption) }
-                        onClick={ () => this.donate(20) }
-                    >
-                        $20
-                    </div>
+                    {
+                        this.props.remaining >= 1 && (
+                            <div
+                                className={ css(styles.donationOption) }
+                                onClick={ () => this.donate(1) }
+                            >
+                                $1
+                            </div>
+                        )
+                    }
+                    {
+                        this.props.remaining >= 5 && (
+                            <div
+                                className={ css(styles.donationOption) }
+                                onClick={ () => this.donate(5) }
+                            >
+                                $5
+                            </div>
+                        )
+                    }
+                    {
+                        this.props.remaining >= 20 && (
+                            <div
+                                className={ css(styles.donationOption) }
+                                onClick={ () => this.donate(20) }
+                            >
+                                $20
+                            </div>
+                        )
+                    }
+                    {
+                        ![0, 1, 5, 20].includes(this.props.remaining) && (
+                            <div
+                                className={ css(styles.donationOption) }
+                                onClick={ () => this.donate(this.props.remaining) }
+                            >
+                                { '$' + this.props.remaining }
+                            </div>
+                        )
+                    }
                     <div
                         className={ css(styles.donationCustom) }
                         onClick={ () => this.donate(this.state.customDonationAmount) }
@@ -110,6 +132,7 @@ class DonateButton extends React.Component {
                             value={ this.state.customDonationAmount }
                             onChange={ e => this.setState({ customDonationAmount: e.target.value }) }
                             onClick={ (e) => e.stopPropagation() }
+                            max={ this.props.remaining }
                         />
                     </div>
                 </div>

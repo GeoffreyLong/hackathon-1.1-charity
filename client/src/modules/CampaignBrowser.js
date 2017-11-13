@@ -83,102 +83,112 @@ class CauseBrowser extends React.Component {
         super();
 
         this.state = {
-            modal: null
+            campaigns: [{
+                id: 1,
+                title: 'Noah Needs a Turtle',
+                subtitle: 'I like turtles',
+                description: 'Noah needs a turtle, but cannot afford one',
+                photos: {
+                    displayPhoto: 'https://i.ytimg.com/vi/p4Jj9QZFJvw/hqdefault.jpg'
+                },
+                goal: {
+                    amount: 100,
+                    pledged: 40,
+                    deadline: 1510876800000,
+                    item: 'https://www.amazon.com/Yellow-Turtles-Moveable-Charm-Pendant/dp/B00KFQ2WFA/ref=sr_1_3?ie=UTF8&qid=1510583926&sr=8-3&keywords=gold+turtle',
+                    deliveryInfo: {
+                        address: 'none'
+                    }
+                },
+                user: {
+                    displayName: 'Noah Radding',
+                    photos: {
+                        displayPhoto: 'http://i0.kym-cdn.com/photos/images/original/000/181/201/i-like-turtles.jpg'
+                    }
+                }
+            }, {
+                id: 2,
+                title: 'Noah Needs a Turtle',
+                subtitle: 'I like turtles',
+                description: 'Noah needs a turtle, but cannot afford one',
+                photos: {
+                    displayPhoto: 'https://i.ytimg.com/vi/p4Jj9QZFJvw/hqdefault.jpg'
+                },
+                goal: {
+                    amount: 100,
+                    pledged: 40,
+                    deadline: 1510876800000,
+                    item: 'https://www.amazon.com/Yellow-Turtles-Moveable-Charm-Pendant/dp/B00KFQ2WFA/ref=sr_1_3?ie=UTF8&qid=1510583926&sr=8-3&keywords=gold+turtle',
+                    deliveryInfo: {
+                        address: 'none'
+                    }
+                },
+                user: {
+                    displayName: 'Noah Radding',
+                    photos: {
+                        displayPhoto: 'http://i0.kym-cdn.com/photos/images/original/000/181/201/i-like-turtles.jpg'
+                    }
+                }
+            }, {
+                id: 3,
+                title: 'Noah Needs a Turtle',
+                subtitle: 'I like turtles',
+                description: 'Noah needs a turtle, but cannot afford one',
+                photos: {
+                    displayPhoto: 'https://i.ytimg.com/vi/p4Jj9QZFJvw/hqdefault.jpg'
+                },
+                goal: {
+                    amount: 100,
+                    pledged: 40,
+                    deadline: 1510876800000,
+                    item: 'https://www.amazon.com/Yellow-Turtles-Moveable-Charm-Pendant/dp/B00KFQ2WFA/ref=sr_1_3?ie=UTF8&qid=1510583926&sr=8-3&keywords=gold+turtle',
+                    deliveryInfo: {
+                        address: 'none'
+                    }
+                },
+                user: {
+                    displayName: 'Noah Radding',
+                    photos: {
+                        displayPhoto: 'http://i0.kym-cdn.com/photos/images/original/000/181/201/i-like-turtles.jpg'
+                    }
+                }
+            }, {
+                id: 4,
+                title: 'Noah Needs a Turtle',
+                subtitle: 'I like turtles',
+                description: 'Noah needs a turtle, but cannot afford one',
+                photos: {
+                    displayPhoto: 'https://i.ytimg.com/vi/p4Jj9QZFJvw/hqdefault.jpg'
+                },
+                goal: {
+                    amount: 100,
+                    pledged: 40,
+                    deadline: 1510876800000,
+                    item: 'https://www.amazon.com/Yellow-Turtles-Moveable-Charm-Pendant/dp/B00KFQ2WFA/ref=sr_1_3?ie=UTF8&qid=1510583926&sr=8-3&keywords=gold+turtle',
+                    deliveryInfo: {
+                        address: 'none'
+                    }
+                },
+                user: {
+                    displayName: 'Noah Radding',
+                    photos: {
+                        displayPhoto: 'http://i0.kym-cdn.com/photos/images/original/000/181/201/i-like-turtles.jpg'
+                    }
+                }
+            }]
         };
+    }
 
-        this.campaigns = [{
-            id: 1,
-            title: 'Noah Needs a Turtle',
-            subtitle: 'I like turtles',
-            description: 'Noah needs a turtle, but cannot afford one',
-            photos: {
-                displayPhoto: 'https://i.ytimg.com/vi/p4Jj9QZFJvw/hqdefault.jpg'
-            },
-            goal: {
-                amount: 100,
-                pledged: 40,
-                deadline: 1510876800000,
-                item: 'https://www.amazon.com/Yellow-Turtles-Moveable-Charm-Pendant/dp/B00KFQ2WFA/ref=sr_1_3?ie=UTF8&qid=1510583926&sr=8-3&keywords=gold+turtle',
-                deliveryInfo: {
-                    address: 'none'
-                }
-            },
-            user: {
-                displayName: 'Noah Radding',
-                photos: {
-                    displayPhoto: 'http://i0.kym-cdn.com/photos/images/original/000/181/201/i-like-turtles.jpg'
-                }
+    // HACK: Workaround for backend... Should change this to a call later when seed data out
+    donate(amount, campaignId) {
+        this.setState((prevState) => {
+            const campaignsClone = prevState.campaigns.slice();
+            campaignsClone.find(campaign => campaign.id === campaignId).goal.pledged += amount;
+
+            return {
+                campaigns: campaignsClone
             }
-        }, {
-            id: 2,
-            title: 'Noah Needs a Turtle',
-            subtitle: 'I like turtles',
-            description: 'Noah needs a turtle, but cannot afford one',
-            photos: {
-                displayPhoto: 'https://i.ytimg.com/vi/p4Jj9QZFJvw/hqdefault.jpg'
-            },
-            goal: {
-                amount: 100,
-                pledged: 40,
-                deadline: 1510876800000,
-                item: 'https://www.amazon.com/Yellow-Turtles-Moveable-Charm-Pendant/dp/B00KFQ2WFA/ref=sr_1_3?ie=UTF8&qid=1510583926&sr=8-3&keywords=gold+turtle',
-                deliveryInfo: {
-                    address: 'none'
-                }
-            },
-            user: {
-                displayName: 'Noah Radding',
-                photos: {
-                    displayPhoto: 'http://i0.kym-cdn.com/photos/images/original/000/181/201/i-like-turtles.jpg'
-                }
-            }
-        }, {
-            id: 3,
-            title: 'Noah Needs a Turtle',
-            subtitle: 'I like turtles',
-            description: 'Noah needs a turtle, but cannot afford one',
-            photos: {
-                displayPhoto: 'https://i.ytimg.com/vi/p4Jj9QZFJvw/hqdefault.jpg'
-            },
-            goal: {
-                amount: 100,
-                pledged: 40,
-                deadline: 1510876800000,
-                item: 'https://www.amazon.com/Yellow-Turtles-Moveable-Charm-Pendant/dp/B00KFQ2WFA/ref=sr_1_3?ie=UTF8&qid=1510583926&sr=8-3&keywords=gold+turtle',
-                deliveryInfo: {
-                    address: 'none'
-                }
-            },
-            user: {
-                displayName: 'Noah Radding',
-                photos: {
-                    displayPhoto: 'http://i0.kym-cdn.com/photos/images/original/000/181/201/i-like-turtles.jpg'
-                }
-            }
-        }, {
-            id: 4,
-            title: 'Noah Needs a Turtle',
-            subtitle: 'I like turtles',
-            description: 'Noah needs a turtle, but cannot afford one',
-            photos: {
-                displayPhoto: 'https://i.ytimg.com/vi/p4Jj9QZFJvw/hqdefault.jpg'
-            },
-            goal: {
-                amount: 100,
-                pledged: 40,
-                deadline: 1510876800000,
-                item: 'https://www.amazon.com/Yellow-Turtles-Moveable-Charm-Pendant/dp/B00KFQ2WFA/ref=sr_1_3?ie=UTF8&qid=1510583926&sr=8-3&keywords=gold+turtle',
-                deliveryInfo: {
-                    address: 'none'
-                }
-            },
-            user: {
-                displayName: 'Noah Radding',
-                photos: {
-                    displayPhoto: 'http://i0.kym-cdn.com/photos/images/original/000/181/201/i-like-turtles.jpg'
-                }
-            }
-        }];
+        });
     }
 
     renderRow(campaigns, i) {
@@ -237,7 +247,10 @@ class CauseBrowser extends React.Component {
                                 />
                             </div>
                         </div>
-                        <DonateButton />
+                        <DonateButton
+                            remaining={ campaign.goal.amount - campaign.goal.pledged }
+                            onDonate={ (amount) => this.donate(amount, campaign.id) }
+                        />
                     </div>
                 )) }
             </div>
@@ -247,8 +260,8 @@ class CauseBrowser extends React.Component {
     renderCampaigns() {
         const campaigns = [];
 
-        for (let i = 0; i < this.campaigns.length; i += 3) {
-            campaigns.push(this.renderRow(this.campaigns.slice(i, i+3), i));
+        for (let i = 0; i < this.state.campaigns.length; i += 3) {
+            campaigns.push(this.renderRow(this.state.campaigns.slice(i, i+3), i));
         }
 
         return campaigns;
