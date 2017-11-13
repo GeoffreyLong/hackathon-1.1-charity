@@ -18,5 +18,4 @@ Spec \controller ->
                     status-code := it
                     send: -> test-user := it
             assert.equal status-code, 201
-            bogus.user |> JSON.stringify |> assert.fail
-            assert.equal test-user{display-name, email, causes, transactions}, bogus.user{display-name, email, causes, transactions}
+            assert.deep-equal test-user{display-name, email, causes, transactions}, bogus.user{display-name, email, causes, transactions}
