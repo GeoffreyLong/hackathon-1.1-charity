@@ -11,6 +11,7 @@ require! {
 prepare-response = (err, value, def-val = 200) ->
     response: {}
     status: 0
+    logger.error "Wonders! Error -> #err, Value -> #{JSON.stringify(value)}, def-val -> #def-val"
     if err
         status = 500
         response =
@@ -26,7 +27,7 @@ prepare-response = (err, value, def-val = 200) ->
     {status: status, response: response}
 
 controller =
-    get-campaign: (req, res) ->
+    get-campaign: (req, res) !->
         id = mongoose.Types.ObjectId req.params.campaignId
         logger.info "#{req.hostname} -> GET /api/campaign/#id"
         campaign.find-one _id: id
@@ -35,7 +36,7 @@ controller =
                 res.status status
                     .send value
     
-    post-campaign: (req, res) ->
+    post-campaign: (req, res) !->
         logger.info "#{req.hostname} -> POST /api/campaign"
         new-campaign = req.params{display-name, description, cause, photo, goals}
         campaign.create new-campaign, (err, c) ->
@@ -43,7 +44,7 @@ controller =
             res.status status
                 .send value
     
-    get-cause: (req, res) ->
+    get-cause: (req, res) !->
         id = mongoose.Types.ObjectId req.params.causeId
         logger.info "#{req.hostname} -> GET /api/cause/#id"
         cause.find-one _id: id
@@ -52,7 +53,7 @@ controller =
                 res.status status
                     .send value
 
-    post-cause: (req, res) ->
+    post-cause: (req, res) !->
         logger.info "#{req.hostname} -> POST /api/cause"
         new-cause = req.params{display-name, description, owner, photos, campaigns}
         cause.create new-cause, (err, c) ->
@@ -61,7 +62,7 @@ controller =
                 .send value
             
 
-    get-transaction: (req, res) ->
+    get-transaction: (req, res) !->
         id = mongoose.Types.ObjectId req.params.transactionId
         logger.info "#{req.hostname} -> GET /api/transaction/#id"
         transaction.find-one _id: id
@@ -70,7 +71,7 @@ controller =
                 res.status status
                     .send value
 
-    post-transaction: (req, res) ->
+    post-transaction: (req, res) !->
         logger.info "#{req.hostname} -> POST /api/transaction"
         new-transaction = req.params{amount, user, cause, payment-info}
         transaction.create new-transaction, (err, t) ->
@@ -78,7 +79,7 @@ controller =
             res.status status
                 .send value
 
-    get-user: (req, res) ->
+    get-user: (req, res) !->
         id = mongoose.Types.ObjectId req.params.userId
         logger.info "#{req.hostname} -> GET /api/user/#id"
         user.find-one _id: id
@@ -87,7 +88,7 @@ controller =
                 res.status status
                     .send value
 
-    get-user-causes: (req, res) ->
+    get-user-causes: (req, res) !->
         id = mongoose.Types.ObjectId req.params.userId
         logger.info "#{req.hostname} -> GET /api/user/#id/causes"
         user.find user: id
@@ -96,7 +97,7 @@ controller =
                 res.status status
                     .send value
          
-    get-user-transactions: (req, res) ->
+    get-user-transactions: (req, res) !->
         id = mongoose.Types.ObjectId req.params.userId
         logger.info "#{req.hostname} -> GET /api/user/#id/transactions"
         transaction.find user: id
@@ -105,7 +106,7 @@ controller =
                 res.status status
                     .send value
 
-    post-user: (req, res) ->
+    post-user: (req, res) !->
         logger.info "#{req.hostname} -> POST /api/user"
         new-user = req.params{display-name, email, causes, transactions}
         user.create new-user, (err, u) ->

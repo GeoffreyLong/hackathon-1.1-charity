@@ -11,7 +11,9 @@ global.Spec = describe
 user-id = 0
 
 Spec \controller ->
-    before: -> seed.clear!
+    before: -> 
+        mongoose.create-connection 'mongodb://localhost/valjean', (error) -> if error then logger.error error else logger.info 'Successfully connected to db!'
+        seed.clear!
     Spec \user ->
         It 'should be able to create a user' ->
             test-user = {}
