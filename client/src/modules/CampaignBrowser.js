@@ -1,6 +1,8 @@
 import React from 'react';
 import { css, StyleSheet } from 'aphrodite/no-important';
 
+import DonateButton from '../elements/DonateButton';
+
 import Colors from '../styles/Colors';
 import Typography from '../styles/Typography';
 
@@ -17,6 +19,12 @@ const styles = StyleSheet.create({
         margin: '1rem',
         boxShadow: 'rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px'
     },
+    campaignHeader: {
+        padding: '0 1rem',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
     titles: {
         padding: '1rem'
     },
@@ -26,11 +34,30 @@ const styles = StyleSheet.create({
     subtitle: {
         color: Colors.cloudy
     },
+    infoIcon: {
+        height: '25px',
+        width: '25px'
+    },
     campaignPhoto: {
         width: '100%',
         height: '100px',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
+    },
+    user: {
+        display: 'flex',
+        alignItems: 'top',
+        padding: '0.5rem 2rem'
+    },
+    userPhoto: {
+        height: '50px',
+        width: '50px',
+        borderRadius: '50%'
+    },
+    userName: {
+        fontSize: Typography.sizes.medium,
+        padding: '0.25rem 1rem',
+        fontWeight: 'bold'
     },
     campaignDescription: {
         padding: '1rem'
@@ -55,7 +82,12 @@ class CauseBrowser extends React.Component {
     constructor() {
         super();
 
+        this.state = {
+            modal: null
+        };
+
         this.campaigns = [{
+            id: 1,
             title: 'Noah Needs a Turtle',
             subtitle: 'I like turtles',
             description: 'Noah needs a turtle, but cannot afford one',
@@ -70,8 +102,15 @@ class CauseBrowser extends React.Component {
                 deliveryInfo: {
                     address: 'none'
                 }
+            },
+            user: {
+                displayName: 'Noah Radding',
+                photos: {
+                    displayPhoto: 'http://i0.kym-cdn.com/photos/images/original/000/181/201/i-like-turtles.jpg'
+                }
             }
         }, {
+            id: 2,
             title: 'Noah Needs a Turtle',
             subtitle: 'I like turtles',
             description: 'Noah needs a turtle, but cannot afford one',
@@ -86,8 +125,15 @@ class CauseBrowser extends React.Component {
                 deliveryInfo: {
                     address: 'none'
                 }
+            },
+            user: {
+                displayName: 'Noah Radding',
+                photos: {
+                    displayPhoto: 'http://i0.kym-cdn.com/photos/images/original/000/181/201/i-like-turtles.jpg'
+                }
             }
         }, {
+            id: 3,
             title: 'Noah Needs a Turtle',
             subtitle: 'I like turtles',
             description: 'Noah needs a turtle, but cannot afford one',
@@ -102,8 +148,15 @@ class CauseBrowser extends React.Component {
                 deliveryInfo: {
                     address: 'none'
                 }
+            },
+            user: {
+                displayName: 'Noah Radding',
+                photos: {
+                    displayPhoto: 'http://i0.kym-cdn.com/photos/images/original/000/181/201/i-like-turtles.jpg'
+                }
             }
         }, {
+            id: 4,
             title: 'Noah Needs a Turtle',
             subtitle: 'I like turtles',
             description: 'Noah needs a turtle, but cannot afford one',
@@ -117,6 +170,12 @@ class CauseBrowser extends React.Component {
                 item: 'https://www.amazon.com/Yellow-Turtles-Moveable-Charm-Pendant/dp/B00KFQ2WFA/ref=sr_1_3?ie=UTF8&qid=1510583926&sr=8-3&keywords=gold+turtle',
                 deliveryInfo: {
                     address: 'none'
+                }
+            },
+            user: {
+                displayName: 'Noah Radding',
+                photos: {
+                    displayPhoto: 'http://i0.kym-cdn.com/photos/images/original/000/181/201/i-like-turtles.jpg'
                 }
             }
         }];
@@ -128,18 +187,24 @@ class CauseBrowser extends React.Component {
                 className={ css(styles.campaignRow) }
                 key={ 'campaign-row-' + i }
             >
-                { campaigns.map((campaign, j) => (
+                { campaigns.map(campaign => (
                     <div
                         className={ css(styles.campaign) }
-                        key={ 'campaign-' + i + '-' + j }
+                        key={ 'campaign-' + campaign.id }
                     >
-                        <div className={ css(styles.titles) }>
-                            <div className={ css(styles.title) }>
-                                { campaign.title }
+                        <div className={ css(styles.campaignHeader) }>
+                            <div className={ css(styles.titles) }>
+                                <div className={ css(styles.title) }>
+                                    { campaign.title }
+                                </div>
+                                <div className={ css(styles.subtitle) }>
+                                    { campaign.subtitle }
+                                </div>
                             </div>
-                            <div className={ css(styles.subtitle) }>
-                                { campaign.subtitle }
-                            </div>
+                            <img
+                                className={ css(styles.infoIcon) }
+                                src='https://openclipart.org/image/2400px/svg_to_png/274087/1488160614.png'
+                            />
                         </div>
                         <div
                             className={ css(styles.campaignPhoto) }
@@ -147,6 +212,15 @@ class CauseBrowser extends React.Component {
                                 backgroundImage: 'url(' + campaign.photos.displayPhoto + ')'
                             }}
                         />
+                        <div
+                            className={ css(styles.user) }
+                        >
+                            <img
+                                src={ campaign.user.photos.displayPhoto }
+                                className={ css(styles.userPhoto) }
+                            />
+                            <div className={ css(styles.userName) }> { campaign.user.displayName } </div>
+                        </div>
                         <div className={ css(styles.campaignDescription) }>
                             { campaign.description }
                         </div>
@@ -163,6 +237,7 @@ class CauseBrowser extends React.Component {
                                 />
                             </div>
                         </div>
+                        <DonateButton />
                     </div>
                 )) }
             </div>
