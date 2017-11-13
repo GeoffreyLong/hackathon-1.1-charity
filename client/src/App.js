@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-import CauseBrowser from './modules/CauseBrowser';
+import CampaignBrowser from './modules/CampaignBrowser';
 import Cause from './modules/Cause';
 import Profile from './modules/Profile';
 
@@ -13,7 +13,7 @@ class App extends React.Component {
             <div>
                 <Header/>
                 <Switch>
-                    <Route path='/' component={ CauseBrowser } exact />
+                    <Route path='/' component={ CampaignBrowser } exact />
                     <Route path='/profile' component={ Profile } />
                     <Route path='/cause' component={ Cause } />
                     <Route
