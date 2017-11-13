@@ -63,4 +63,3 @@ A user can create causes and campaigns if they have sponsor=true in their data o
 
 A sponsor (user) can create multiple causes, each causes can have multiple campaigns. Causes are like children, schools, etc, anything that needs support. If a child is a cause, and they need gifts for Christmas, this is a new campaign.
 
-

@@ -1,10 +1,11 @@
+require! mongoose
 require! {
-    './bogus'
     './logger'
     './models/cause'
     './models/transaction'
     './models/user'
 }
+        
 
 controller =
     get-cause: (req, res) ->
@@ -34,11 +35,23 @@ controller =
     get-user-transactions: (req, res) ->
         id = req.params.userId
         logger.info "#{req.hostname} -> GET /api/user/#id/transactions"
-        res.status 200
-          .send transaction.find {user: id}
+        e = error: void
+        trans = message: \nothing
+        transaction.find(user: id).exec (err, t) -> 
+            e.error := err
+            trans := t
+        status = if e.error then 500 else 200
+        res.status status
+            .send if e.error then e else trans
 
     post-user: (req, res) ->
         logger.info "#{req.hostname} -> POST /api/user"
+        {display-name, email, causes, transactions} = req.params
+        new-user = {display-name, email, causes, transactions}
+        new-user.id = mongoose.Types.ObjectId()
+        user.create new-user
+        res.status 201
+            .send new-user
 
 
 module.exports = controller
