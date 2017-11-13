@@ -75,6 +75,10 @@ const styles = StyleSheet.create({
         height: '16px',
         margin: '2px',
         display: 'inline-block'
+    },
+    isFinished: {
+        height: '100%',
+        width: '100%'
     }
 });
 
@@ -181,10 +185,22 @@ class CauseBrowser extends React.Component {
 
     // HACK: Workaround for backend... Should change this to a call later when seed data out
     donate(amount, campaignId) {
-        this.setState((prevState) => {
-            const campaignsClone = prevState.campaigns.slice();
-            campaignsClone.find(campaign => campaign.id === campaignId).goal.pledged += amount;
+        const campaignsClone = this.state.campaigns.slice();
+        const curCampaign = campaignsClone.find(campaign => campaign.id === campaignId);
+        curCampaign.goal.pledged += amount;
 
+        if (curCampaign.goal.pledged === curCampaign.goal.amount) {
+            curCampaign.isFinished = true;
+
+            setTimeout(() => {
+                campaignsClone.splice(campaignsClone.indexOf(curCampaign), 1)
+                this.setState({
+                    campaigns: campaignsClone
+                })
+            }, 4000);
+        }
+
+        this.setState((prevState) => {
             return {
                 campaigns: campaignsClone
             }
@@ -202,55 +218,65 @@ class CauseBrowser extends React.Component {
                         className={ css(styles.campaign) }
                         key={ 'campaign-' + campaign.id }
                     >
-                        <div className={ css(styles.campaignHeader) }>
-                            <div className={ css(styles.titles) }>
-                                <div className={ css(styles.title) }>
-                                    { campaign.title }
-                                </div>
-                                <div className={ css(styles.subtitle) }>
-                                    { campaign.subtitle }
-                                </div>
-                            </div>
+                        { campaign.isFinished ? (
                             <img
-                                className={ css(styles.infoIcon) }
-                                src='https://openclipart.org/image/2400px/svg_to_png/274087/1488160614.png'
+                                className={ css(styles.isFinished) }
+                                src='https://i.giphy.com/media/P9hygc0S8eVs4/giphy.webp'
                             />
-                        </div>
-                        <div
-                            className={ css(styles.campaignPhoto) }
-                            style={{
-                                backgroundImage: 'url(' + campaign.photos.displayPhoto + ')'
-                            }}
-                        />
-                        <div
-                            className={ css(styles.user) }
-                        >
-                            <img
-                                src={ campaign.user.photos.displayPhoto }
-                                className={ css(styles.userPhoto) }
-                            />
-                            <div className={ css(styles.userName) }> { campaign.user.displayName } </div>
-                        </div>
-                        <div className={ css(styles.campaignDescription) }>
-                            { campaign.description }
-                        </div>
-                        <div className={ css(styles.goal) }>
-                            { '$' + campaign.goal.pledged + ' of $' + campaign.goal.amount }
-                            <div
-                                className={ css(styles.goalBar) }
-                            >
-                                <span
-                                    className={ css(styles.goalBarFill) }
+                        ) : (
+                            <div>
+                                <div className={ css(styles.campaignHeader) }>
+                                    <div className={ css(styles.titles) }>
+                                        <div className={ css(styles.title) }>
+                                            { campaign.title }
+                                        </div>
+                                        <div className={ css(styles.subtitle) }>
+                                            { campaign.subtitle }
+                                        </div>
+                                    </div>
+                                    <img
+                                        className={ css(styles.infoIcon) }
+                                        src='https://openclipart.org/image/2400px/svg_to_png/274087/1488160614.png'
+                                    />
+                                </div>
+                                <div
+                                    className={ css(styles.campaignPhoto) }
                                     style={{
-                                        width: (campaign.goal.pledged / campaign.goal.amount) * 100 + '%'
+                                        backgroundImage: 'url(' + campaign.photos.displayPhoto + ')'
                                     }}
                                 />
+                                <div
+                                    className={ css(styles.user) }
+                                >
+                                    <img
+                                        src={ campaign.user.photos.displayPhoto }
+                                        className={ css(styles.userPhoto) }
+                                    />
+                                    <div className={ css(styles.userName) }> { campaign.user.displayName } </div>
+                                </div>
+                                <div className={ css(styles.campaignDescription) }>
+                                    { campaign.description }
+                                </div>
+                                <div className={ css(styles.goal) }>
+                                    { '$' + campaign.goal.pledged + ' of $' + campaign.goal.amount }
+                                    <div
+                                        className={ css(styles.goalBar) }
+                                    >
+                                    <span
+                                        className={ css(styles.goalBarFill) }
+                                        style={{
+                                            width: (campaign.goal.pledged / campaign.goal.amount) * 100 + '%'
+                                        }}
+                                    />
+                                    </div>
+                                </div>
+                                <DonateButton
+                                    remaining={ campaign.goal.amount - campaign.goal.pledged }
+                                    onDonate={ (amount) => this.donate(amount, campaign.id) }
+                                />
+
                             </div>
-                        </div>
-                        <DonateButton
-                            remaining={ campaign.goal.amount - campaign.goal.pledged }
-                            onDonate={ (amount) => this.donate(amount, campaign.id) }
-                        />
+                        )}
                     </div>
                 )) }
             </div>
