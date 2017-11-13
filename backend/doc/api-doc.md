@@ -6,8 +6,11 @@ Welcome! This is some doc!
 - POST /api/user
 - GET [/api/cause/:id](/api/cause/1)
 - POST /api/cause
+- GET [/api/campaigns/:id](/api/campaigns/1)
+- POST /api/campaigns
 - GET [/api/transaction/:id](/api/transaction/1)
 - GET [/api/user/:id/transactions](/api/user/1/transactions)
+- GET [/api/user/:id/campaigns](/api/user/1/campaigns)
 ---
 ### Models
 #### Users

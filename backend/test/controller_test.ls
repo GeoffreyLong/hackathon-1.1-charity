@@ -2,20 +2,34 @@ require! \assert
 require! \mocha
 
 require! '../controller'
-require! '../models/user'
-require! '../bogus'
+require! '../seed'
+require! './sample'
 
 global.It = it
 global.Spec = describe
 
+user-id = 0
+
 Spec \controller ->
+    before: -> seed.clear!
     Spec \user ->
         It 'should be able to create a user' ->
-            status-code = 0
             test-user = {}
-            controller.post-user {hostname: \mocha, params: bogus.user} do
+            status-code = 0
+            controller.post-user {hostname: \mocha, params: sample.user} do
                 status: -> 
                     status-code := it
                     send: -> test-user := it
+            user-id := test-user.id
             assert.equal status-code, 201
-            assert.deep-equal test-user{display-name, email, causes, transactions}, bogus.user{display-name, email, causes, transactions}
+            assert.deep-equal test-user{display-name, email, sponsor}, sample.user{display-name, email, sponsor}
+
+        It 'should be able to get it back' ->
+            test-user = {}
+            status-code = 0
+            controller.get-user {hostname: \mocha, params: {id: user-id}} do
+                status: ->
+                    status-code := it
+                    send: -> test-user := it
+            assert.equal status-code, 200
+            assert.deep-equal test-user{display-name, email, sponsor}, sample.user{display-name, email, sponsor}
