@@ -5,24 +5,15 @@ Cause = mongoose.model 'Cause' {
     description: String
     owner: {
         type: mongoose.Schema.Types.ObjectId
-        ref: 'Transaction'
+        ref: 'User'
     }
     photos: {
         displayPhoto: String
         photos: [String]
     }
-    goal: {
-        amount: Number
-        pledged: Number
-        deadline: Date
-        item: String
-        deliveryInfo: {
-            address: String
-        }
-    }
-    transactions: [{
-        type: mongoose.Schema.Types.ObjectId
-        ref: 'Transaction'
+    campaigns: [{
+       type: mongoose.Schema.Types.ObjectId
+       ref: 'Campaign'
     }]
     feed: [{
         createTime: Date,

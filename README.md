@@ -55,3 +55,11 @@ gulp clean
 
 If on a mac, follow this guide
 https://treehouse.github.io/installation-guides/mac/mongo-mac.html 
+
+## Data Architecture
+We have users, causes, campaigns, and transactions. 
+
+A user can create causes and campaigns if they have sponsor=true in their data object.
+
+A sponsor (user) can create multiple causes, each causes can have multiple campaigns. Causes are like children, schools, etc, anything that needs support. If a child is a cause, and they need gifts for Christmas, this is a new campaign.
+
