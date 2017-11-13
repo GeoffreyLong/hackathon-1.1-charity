@@ -15,6 +15,7 @@ prepare-response = (err, value, def-val = 200) ->
         status = 500
         response =
             error: err
+        logger.error err
     else if Obj.empty value
         status = 404
         response =
@@ -26,7 +27,7 @@ prepare-response = (err, value, def-val = 200) ->
 
 controller =
     get-campaign: (req, res) ->
-        id = req.params.campaignId
+        id = mongoose.Types.ObjectId req.params.campaignId
         logger.info "#{req.hostname} -> GET /api/campaign/#id"
         campaign.find-one _id: id
             .exec (err, c) ->
@@ -43,7 +44,7 @@ controller =
                 .send value
     
     get-cause: (req, res) ->
-        id = req.params.causeId
+        id = mongoose.Types.ObjectId req.params.causeId
         logger.info "#{req.hostname} -> GET /api/cause/#id"
         cause.find-one _id: id
             .exec (err, c) ->
@@ -61,7 +62,7 @@ controller =
             
 
     get-transaction: (req, res) ->
-        id = req.params.transactionId
+        id = mongoose.Types.ObjectId req.params.transactionId
         logger.info "#{req.hostname} -> GET /api/transaction/#id"
         transaction.find-one _id: id
             .exec (err, t) ->
@@ -78,7 +79,7 @@ controller =
                 .send value
 
     get-user: (req, res) ->
-        id = req.params.userId
+        id = mongoose.Types.ObjectId req.params.userId
         logger.info "#{req.hostname} -> GET /api/user/#id"
         user.find-one _id: id
             .exec (err, u) ->
@@ -87,7 +88,7 @@ controller =
                     .send value
 
     get-user-causes: (req, res) ->
-        id = req.params.userId
+        id = mongoose.Types.ObjectId req.params.userId
         logger.info "#{req.hostname} -> GET /api/user/#id/causes"
         user.find user: id
             .exec (err, c) ->
@@ -96,7 +97,7 @@ controller =
                     .send value
          
     get-user-transactions: (req, res) ->
-        id = req.params.userId
+        id = mongoose.Types.ObjectId req.params.userId
         logger.info "#{req.hostname} -> GET /api/user/#id/transactions"
         transaction.find user: id
             .exec (err, t) -> 
