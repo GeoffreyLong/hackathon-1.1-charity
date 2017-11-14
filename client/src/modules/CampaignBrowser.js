@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     },
     campaignPhoto: {
         width: '100%',
-        height: '100px',
+        height: '200px',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
     },
@@ -90,8 +90,8 @@ class CauseBrowser extends React.Component {
             campaigns: [{
                 id: 1,
                 title: 'Noah Needs a Turtle',
-                subtitle: 'I like turtles',
-                description: 'Noah needs a turtle, but cannot afford one',
+                subtitle: 'He like turtles',
+                description: 'Noah needs a turtle. He keeps on losing them down drains in the hopes they will become Teenage Mutant Ninja Turtles.',
                 photos: {
                     displayPhoto: 'https://i.ytimg.com/vi/p4Jj9QZFJvw/hqdefault.jpg'
                 },
@@ -99,7 +99,7 @@ class CauseBrowser extends React.Component {
                     amount: 100,
                     pledged: 40,
                     deadline: 1510876800000,
-                    item: 'https://www.amazon.com/Yellow-Turtles-Moveable-Charm-Pendant/dp/B00KFQ2WFA/ref=sr_1_3?ie=UTF8&qid=1510583926&sr=8-3&keywords=gold+turtle',
+                    item: 'https://www.amazon.com/Design-Toscano-Gilbert-Turtle-Multicolored/dp/B00BB572Y0/ref=sr_1_1_sspa?ie=UTF8&qid=1510605838&sr=8-1-spons&keywords=turtle&refinements=p_72%3A2661618011&psc=1',
                     deliveryInfo: {
                         address: 'none'
                     }
@@ -112,61 +112,61 @@ class CauseBrowser extends React.Component {
                 }
             }, {
                 id: 2,
-                title: 'Noah Needs a Turtle',
-                subtitle: 'I like turtles',
-                description: 'Noah needs a turtle, but cannot afford one',
+                title: 'Ash needs a Pikachu',
+                subtitle: 'Ash is trying to build out his PokeDex',
+                description: 'He wants to be the best, like no one ever was. To catch them is his real test; to train them is his cause. Unfortunately, he could not catch a pikachu',
                 photos: {
-                    displayPhoto: 'https://i.ytimg.com/vi/p4Jj9QZFJvw/hqdefault.jpg'
+                    displayPhoto: 'https://cdn.bulbagarden.net/upload/thumb/4/49/Ash_Pikachu.png/250px-Ash_Pikachu.png'
                 },
                 goal: {
-                    amount: 100,
-                    pledged: 40,
+                    amount: 10000,
+                    pledged: 300,
                     deadline: 1510876800000,
-                    item: 'https://www.amazon.com/Yellow-Turtles-Moveable-Charm-Pendant/dp/B00KFQ2WFA/ref=sr_1_3?ie=UTF8&qid=1510583926&sr=8-3&keywords=gold+turtle',
+                    item: 'https://www.amazon.com/Pokemon-Center-Original-Sleeping-Pikachu/dp/B01931RATU/ref=sr_1_3?ie=UTF8&qid=1510606139&sr=8-3&keywords=pikachu',
                     deliveryInfo: {
                         address: 'none'
                     }
                 },
                 user: {
-                    displayName: 'Noah Radding',
+                    displayName: 'Ash Ketchum',
                     photos: {
-                        displayPhoto: 'http://i0.kym-cdn.com/photos/images/original/000/181/201/i-like-turtles.jpg'
+                        displayPhoto: 'http://www.behindthevoiceactors.com/_img/chars/ash-ketchum-pokemon-the-movie-diancie-and-the-cocoon-of-destruction-88.5.jpg'
                     }
                 }
             }, {
                 id: 3,
-                title: 'Noah Needs a Turtle',
-                subtitle: 'I like turtles',
-                description: 'Noah needs a turtle, but cannot afford one',
+                title: 'Luke Needs a Hand',
+                subtitle: 'Lost in Cloud City',
+                description: 'Luke\'s father took Luke\'s hand away. Please help Luke buy a new one! It should be animatronic, and should respond when you poke it with a needle',
                 photos: {
-                    displayPhoto: 'https://i.ytimg.com/vi/p4Jj9QZFJvw/hqdefault.jpg'
+                    displayPhoto: 'https://vignette.wikia.nocookie.net/starwars/images/a/a0/LukeHand.png/revision/latest?cb=20130325041744'
                 },
                 goal: {
-                    amount: 100,
-                    pledged: 40,
+                    amount: 25,
+                    pledged: 20,
                     deadline: 1510876800000,
-                    item: 'https://www.amazon.com/Yellow-Turtles-Moveable-Charm-Pendant/dp/B00KFQ2WFA/ref=sr_1_3?ie=UTF8&qid=1510583926&sr=8-3&keywords=gold+turtle',
+                    item: 'https://www.amazon.com/US-Toy-Robot-Hand-Pack/dp/B00362KX9W/ref=sr_1_6?s=toys-and-games&ie=UTF8&qid=1510606099&sr=1-6&keywords=robot+hand&dpID=41wTQraq1iL&preST=_SY300_QL70_&dpSrc=srch',
                     deliveryInfo: {
                         address: 'none'
                     }
                 },
                 user: {
-                    displayName: 'Noah Radding',
+                    displayName: 'Luke Skywalker',
                     photos: {
-                        displayPhoto: 'http://i0.kym-cdn.com/photos/images/original/000/181/201/i-like-turtles.jpg'
+                        displayPhoto: 'http://cdn.playbuzz.com/cdn/cf28c3f8-0da1-4dc4-8299-53a82b498dac/55d9a8ee-1802-4767-89d0-35d01f4f8da3.jpg'
                     }
                 }
             }, {
                 id: 4,
-                title: 'Noah Needs a Turtle',
-                subtitle: 'I like turtles',
-                description: 'Noah needs a turtle, but cannot afford one',
+                title: 'Stranger Things needs a Dart',
+                subtitle: 'Trying to buy a new Dart',
+                description: 'You probably shouldn\'t fund this one',
                 photos: {
-                    displayPhoto: 'https://i.ytimg.com/vi/p4Jj9QZFJvw/hqdefault.jpg'
+                    displayPhoto: 'https://cdn3.whatculture.com/images/2017/10/a4f09e1d94ba3200-600x400.jpg'
                 },
                 goal: {
                     amount: 100,
-                    pledged: 40,
+                    pledged: 0,
                     deadline: 1510876800000,
                     item: 'https://www.amazon.com/Yellow-Turtles-Moveable-Charm-Pendant/dp/B00KFQ2WFA/ref=sr_1_3?ie=UTF8&qid=1510583926&sr=8-3&keywords=gold+turtle',
                     deliveryInfo: {
@@ -174,9 +174,9 @@ class CauseBrowser extends React.Component {
                     }
                 },
                 user: {
-                    displayName: 'Noah Radding',
+                    displayName: 'Dustin Henderson',
                     photos: {
-                        displayPhoto: 'http://i0.kym-cdn.com/photos/images/original/000/181/201/i-like-turtles.jpg'
+                        displayPhoto: 'https://images.hellogiggles.com/uploads/2016/08/08055255/GATEN1-700x525.jpg'
                     }
                 }
             }]
@@ -193,7 +193,7 @@ class CauseBrowser extends React.Component {
             curCampaign.isFinished = true;
 
             setTimeout(() => {
-                campaignsClone.splice(campaignsClone.indexOf(curCampaign), 1)
+                campaignsClone.splice(campaignsClone.indexOf(curCampaign), 1);
                 this.setState({
                     campaigns: campaignsClone
                 })

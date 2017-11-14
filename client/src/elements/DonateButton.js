@@ -64,6 +64,7 @@ class DonateButton extends React.Component {
 
     donate(amt) {
         this.props.onDonate(amt);
+        this.setState({ isActive: false });
     }
 
     render() {

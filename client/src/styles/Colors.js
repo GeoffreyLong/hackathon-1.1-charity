@@ -6,6 +6,7 @@ const Colors = {
 
     white: '#FFFFFF',
     cloudy: '#555555',
+    foggy: '#ADADAD',
     misty: '#DEDEDE'
 };
 
